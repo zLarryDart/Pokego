@@ -1,88 +1,83 @@
-//
-//  ContentView.swift
-//  PokeGo
-//
-//  Created by Armando Larios on 04/02/24.
-//
-
 import SwiftUI
-import CoreData
 
 struct ContentView: View {
-    @Environment(\.managedObjectContext) private var viewContext
-
-    @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
-        animation: .default)
-    private var items: FetchedResults<Item>
+    @State private var pokemonList: [Pokemon] = []
+    @State private var isLoading = true
 
     var body: some View {
         NavigationView {
-            List {
-                ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.timestamp!, formatter: itemFormatter)")
-                    } label: {
-                        Text(item.timestamp!, formatter: itemFormatter)
+            if isLoading {
+                ProgressView("Cargando...")
+            } else {
+                ScrollView {
+                    LazyVGrid(columns: [GridItem(.adaptive(minimum: 120))]) {
+                        ForEach(pokemonList, id: \.name) { pokemon in
+                            NavigationLink(destination: PokemonDetailView(pokemon: pokemon)) {
+                                PokemonCard(pokemon: pokemon)
+                            }
+                        }
                     }
                 }
-                .onDelete(perform: deleteItems)
-            }
-            .toolbar {
-#if os(iOS)
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                }
-#endif
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
-                    }
-                }
-            }
-            Text("Select an item")
-        }
-    }
-
-    private func addItem() {
-        withAnimation {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
-
-            do {
-                try viewContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+                .navigationTitle("Pokedex")
             }
         }
+        .onAppear {
+            fetchPokemon()
+        }
     }
-
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            offsets.map { items[$0] }.forEach(viewContext.delete)
-
-            do {
-                try viewContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+    
+    func fetchPokemon() {
+        PokemonService.shared.fetchPokemonList { result in
+            switch result {
+            case .success(let list):
+                DispatchQueue.main.async {
+                    self.pokemonList = list.results
+                    self.isLoading = false
+                }
+            case .failure(let error):
+                print(error)
             }
         }
     }
 }
 
-private let itemFormatter: DateFormatter = {
-    let formatter = DateFormatter()
-    formatter.dateStyle = .short
-    formatter.timeStyle = .medium
-    return formatter
-}()
+struct PokemonCard: View {
+    let pokemon: Pokemon
+    @State private var imageUrl: String?
 
-#Preview {
-    ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+    var body: some View {
+        VStack {
+            if let imageUrl = imageUrl {
+                RemoteImage(url: imageUrl)
+                    .scaledToFit()
+                    .frame(width: 100, height: 10)
+            } else {
+                Image(systemName: "photo")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 100, height: 100)
+            }
+            Text(pokemon.name.capitalized)
+                .font(.caption)
+        }
+        .onAppear {
+            loadPokemonDetails()
+        }
+        .padding()
+        .background(Color.gray.opacity(0.2))
+        .cornerRadius(10)
+    }
+
+    private func loadPokemonDetails() {
+        PokemonService.shared.fetchPokemonDetail(for: pokemon) { result in
+            switch result {
+            case .success(let details):
+                DispatchQueue.main.async {
+                    self.imageUrl = details.sprites.front_default
+                }
+            case .failure:
+                self.imageUrl = nil
+            }
+        }
+    }
 }

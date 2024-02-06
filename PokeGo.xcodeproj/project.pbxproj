@@ -16,6 +16,16 @@
 		8F4277AE2B705D37009D45E1 /* PokeGoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F4277AD2B705D37009D45E1 /* PokeGoTests.swift */; };
 		8F4277B82B705D37009D45E1 /* PokeGoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F4277B72B705D37009D45E1 /* PokeGoUITests.swift */; };
 		8F4277BA2B705D37009D45E1 /* PokeGoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F4277B92B705D37009D45E1 /* PokeGoUITestsLaunchTests.swift */; };
+		8FF88B602B706FC500B9E7CE /* PokemonDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF88B5F2B706FC500B9E7CE /* PokemonDetailView.swift */; };
+		8FF88B612B706FC500B9E7CE /* PokemonDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF88B5F2B706FC500B9E7CE /* PokemonDetailView.swift */; };
+		8FF88B622B706FC500B9E7CE /* PokemonDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF88B5F2B706FC500B9E7CE /* PokemonDetailView.swift */; };
+		8FF88B702B7074CC00B9E7CE /* PokemonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF88B6F2B7074CC00B9E7CE /* PokemonModel.swift */; };
+		8FF88B712B7074CC00B9E7CE /* PokemonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF88B6F2B7074CC00B9E7CE /* PokemonModel.swift */; };
+		8FF88B722B7074CC00B9E7CE /* PokemonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF88B6F2B7074CC00B9E7CE /* PokemonModel.swift */; };
+		8FF88B742B7074E400B9E7CE /* PokemonService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF88B732B7074E400B9E7CE /* PokemonService.swift */; };
+		8FF88B752B7074E400B9E7CE /* PokemonService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF88B732B7074E400B9E7CE /* PokemonService.swift */; };
+		8FF88B762B7074E400B9E7CE /* PokemonService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF88B732B7074E400B9E7CE /* PokemonService.swift */; };
+		8FF88B782B720D6800B9E7CE /* RemoteImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF88B772B720D6700B9E7CE /* RemoteImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +59,10 @@
 		8F4277B32B705D37009D45E1 /* PokeGoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PokeGoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F4277B72B705D37009D45E1 /* PokeGoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokeGoUITests.swift; sourceTree = "<group>"; };
 		8F4277B92B705D37009D45E1 /* PokeGoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokeGoUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		8FF88B5F2B706FC500B9E7CE /* PokemonDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PokemonDetailView.swift; sourceTree = "<group>"; };
+		8FF88B6F2B7074CC00B9E7CE /* PokemonModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonModel.swift; sourceTree = "<group>"; };
+		8FF88B732B7074E400B9E7CE /* PokemonService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonService.swift; sourceTree = "<group>"; };
+		8FF88B772B720D6700B9E7CE /* RemoteImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,7 +115,11 @@
 			children = (
 				8F4277962B705D34009D45E1 /* PokeGoApp.swift */,
 				8F4277982B705D34009D45E1 /* Persistence.swift */,
+				8FF88B5F2B706FC500B9E7CE /* PokemonDetailView.swift */,
 				8F42779D2B705D34009D45E1 /* ContentView.swift */,
+				8FF88B6F2B7074CC00B9E7CE /* PokemonModel.swift */,
+				8FF88B732B7074E400B9E7CE /* PokemonService.swift */,
+				8FF88B772B720D6700B9E7CE /* RemoteImage.swift */,
 				8F42779F2B705D36009D45E1 /* Assets.xcassets */,
 				8F4277A12B705D36009D45E1 /* PokeGo.entitlements */,
 				8F42779A2B705D34009D45E1 /* PokeGo.xcdatamodeld */,
@@ -266,7 +284,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				8F4277972B705D34009D45E1 /* PokeGoApp.swift in Sources */,
+				8FF88B702B7074CC00B9E7CE /* PokemonModel.swift in Sources */,
+				8FF88B602B706FC500B9E7CE /* PokemonDetailView.swift in Sources */,
+				8FF88B782B720D6800B9E7CE /* RemoteImage.swift in Sources */,
 				8F42779C2B705D34009D45E1 /* PokeGo.xcdatamodeld in Sources */,
+				8FF88B742B7074E400B9E7CE /* PokemonService.swift in Sources */,
 				8F42779E2B705D34009D45E1 /* ContentView.swift in Sources */,
 				8F4277992B705D34009D45E1 /* Persistence.swift in Sources */,
 			);
@@ -277,6 +299,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				8F4277AE2B705D37009D45E1 /* PokeGoTests.swift in Sources */,
+				8FF88B752B7074E400B9E7CE /* PokemonService.swift in Sources */,
+				8FF88B712B7074CC00B9E7CE /* PokemonModel.swift in Sources */,
+				8FF88B612B706FC500B9E7CE /* PokemonDetailView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,8 +309,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8FF88B762B7074E400B9E7CE /* PokemonService.swift in Sources */,
 				8F4277B82B705D37009D45E1 /* PokeGoUITests.swift in Sources */,
 				8F4277BA2B705D37009D45E1 /* PokeGoUITestsLaunchTests.swift in Sources */,
+				8FF88B622B706FC500B9E7CE /* PokemonDetailView.swift in Sources */,
+				8FF88B722B7074CC00B9E7CE /* PokemonModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -447,7 +475,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.2;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = pokeGo.PokeGo;
+				PRODUCT_BUNDLE_IDENTIFIER = pokeegoo.pokeegoo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
@@ -485,7 +513,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.2;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = pokeGo.PokeGo;
+				PRODUCT_BUNDLE_IDENTIFIER = pokeegoo.pokeegoo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
