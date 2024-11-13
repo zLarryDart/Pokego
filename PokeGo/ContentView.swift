@@ -10,7 +10,7 @@ struct ContentView: View {
                 ProgressView("Cargando...")
             } else {
                 ScrollView {
-                    LazyVGrid(columns: [GridItem(.adaptive(minimum: 120))]) {
+                    LazyVGrid(columns: [GridItem(.adaptive(minimum: 110))]) {
                         ForEach(pokemonList, id: \.name) { pokemon in
                             NavigationLink(destination: PokemonDetailView(pokemon: pokemon)) {
                                 PokemonCard(pokemon: pokemon)
@@ -50,12 +50,12 @@ struct PokemonCard: View {
             if let imageUrl = imageUrl {
                 RemoteImage(url: imageUrl)
                     .scaledToFit()
-                    .frame(width: 100, height: 10)
+                    .frame(width: 80, height: 80)
             } else {
                 Image(systemName: "photo")
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 100, height: 100)
+                    .frame(width: 80, height: 80)
             }
             Text(pokemon.name.capitalized)
                 .font(.caption)
@@ -65,7 +65,7 @@ struct PokemonCard: View {
         }
         .padding()
         .background(Color.gray.opacity(0.2))
-        .cornerRadius(10)
+        .cornerRadius(20)
     }
 
     private func loadPokemonDetails() {
